@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trantor Notes | Book Notes Library</title>
+    <title>Trantor Notes | The Wolf of Investing</title>
     <meta
       name="description"
-      content="Trantor Notes - a growing library of compact book notes and rendered summaries."
+      content="Trantor Notes - compact book notes with full rendered summaries."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -14,69 +14,60 @@
     <header class="site-header">
       <div class="header-inner">
         <div>
+          <p class="section-label">Reading Ledger</p>
           <h1>Trantor Notes</h1>
-          <p class="header-subtitle">Books read, distilled, and archived.</p>
         </div>
-        <div id="themeToggleRoot"></div>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          LIGHT
+        </button>
       </div>
     </header>
 
     <main class="site-main">
       <section class="card">
         <div class="flex items-center justify-between gap-2 mb-2">
-          <p class="section-label">Library Overview</p>
-          <span class="badge badge-primary">Growing Archive</span>
+          <span class="badge badge-primary">Book 01</span>
+          <span class="text-sm text-secondary mono">Jordan Belfort</span>
         </div>
-        <h2 class="book-title">Not a single note, a compounding library.</h2>
+        <h2 class="book-title">The Wolf of Investing</h2>
         <p>
-          Trantor Notes is structured for many books over time. Each entry gets
-          a short introduction, a source markdown file, and a fully rendered
-          article for reading in-browser.
+          This book strips investing down to first principles: broad market
+          exposure, low fees, long time horizons, and behavior control.
+          Belfort's central claim is direct: most people do not fail because
+          they pick the wrong stock, they fail because they overtrade, pay too
+          much in fees, and abandon plans during drawdowns.
         </p>
         <p>
-          Today the shelf starts with <strong>The Wolf of Investing</strong>.
-          Next books will drop into the same pattern and this homepage will
-          keep acting as the index.
+          The summary below is rendered from
+          <code>The Wolf of Investing.md</code>, so you can keep your source in
+          markdown and still publish a clean, readable article. The note is
+          opinionated and compressed for speed: thesis, frameworks, first
+          principles, and a practical portfolio blueprint.
         </p>
       </section>
 
       <section class="grid grid-2">
         <article class="card">
-          <p class="card-label">Published Notes</p>
-          <ul class="library-list">
-            <li class="library-item">
-              <span class="status-dot status-dot-live" aria-hidden="true"></span>
-              <div class="library-meta">
-                <a class="library-title" href="#wolf-summary"
-                  >The Wolf of Investing</a
-                >
-                <p class="library-sub">Jordan Belfort</p>
-              </div>
-              <span class="badge badge-success">Live</span>
-            </li>
-          </ul>
+          <p class="card-label">Core Argument</p>
+          <p>
+            Passive, low-cost index investing beats fee-heavy active management
+            for nearly all investors over long periods.
+          </p>
+          <span class="badge badge-success">Low Fees Win</span>
         </article>
         <article class="card">
-          <p class="card-label">Next Slots</p>
-          <ul class="pipeline-list">
-            <li>Book 02 - queued</li>
-            <li>Book 03 - queued</li>
-            <li>Book 04 - queued</li>
-          </ul>
+          <p class="card-label">Execution Model</p>
+          <p>
+            Use monthly contributions, reinvest dividends, rebalance annually,
+            and keep speculation contained to a small side allocation.
+          </p>
+          <span class="badge badge-warning">Behavior Is Edge</span>
         </article>
-      </section>
-
-      <section class="card" id="wolf-summary">
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <span class="badge badge-primary">Featured Book</span>
-          <span class="text-sm text-secondary mono">Book 01</span>
-        </div>
-        <h2 class="book-title">The Wolf of Investing</h2>
-        <p>
-          Belfort frames investing as a discipline problem more than an
-          intelligence problem: most losses come from fees, emotional timing,
-          and complexity traps.
-        </p>
       </section>
 
       <section class="card">
@@ -100,6 +91,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script type="module" src="./main.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
