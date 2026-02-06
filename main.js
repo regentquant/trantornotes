@@ -15,6 +15,13 @@ const BOOKS = [
     author: "Benjamin Graham",
     description: "Benjamin Graham's case that temperamental discipline and margin of safety matter more than intelligence for long-term investment success.",
     file: "The Intelligent Investor, 3rd Ed..md"
+  },
+  {
+    id: "how-an-economy-grows",
+    title: "小岛经济学",
+    author: "Peter Schiff & Andrew Schiff",
+    description: "Peter Schiff's parable-driven case that all prosperity stems from saving and production, and that government monetary expansion is a destructive illusion.",
+    file: "小岛经济学.md"
   }
 ];
 
@@ -100,8 +107,16 @@ async function renderBookPage() {
   metaContent.classList.remove("hidden");
   summarySection.classList.remove("hidden");
 
+  if (window.location.protocol === "file:") {
+    if (articleStatus) {
+      articleStatus.classList.add("alert-danger");
+      articleStatus.innerHTML = "<span>Cannot load summary from file:// — start a local server: <code>python3 -m http.server 8080</code></span>";
+    }
+    return;
+  }
+
   try {
-    const response = await fetch(mdPath, { cache: "no-store" });
+    const response = await fetch(mdPath);
     if (!response.ok) {
       throw new Error(`Unable to load summary (HTTP ${response.status}).`);
     }
@@ -119,7 +134,7 @@ async function renderBookPage() {
   } catch (error) {
     if (articleStatus) {
       articleStatus.classList.add("alert-danger");
-      articleStatus.innerHTML = `<span>${error.message}</span>`;
+      articleStatus.innerHTML = `<span>Unable to load summary. Please ensure you are running a local server.</span>`;
     }
   }
 }
