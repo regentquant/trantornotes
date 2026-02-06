@@ -21,19 +21,18 @@ Push to `main` triggers `.github/workflows/deploy.yml`, which copies static file
 
 ## Architecture
 
-- `index.html` — Homepage, renders book grid dynamically from `books.json`
+- `index.html` — Homepage, renders book grid dynamically from the `BOOKS` array in `main.js`
 - `book.html` — Single detail template for all books, reads `?id=slug` from URL
-- `books.json` — Book registry (single source of truth for all book metadata)
 - `books/` — Markdown summaries (deployed), EPUBs and extracted `.txt` files
 - `styles.css` — Design system using CSS custom properties (light/dark theme)
-- `main.js` — Theme toggle, book grid rendering, book detail page rendering
+- `main.js` — Book registry (`BOOKS` array), theme toggle, grid rendering, detail page rendering
 - `tools/epub_to_txt.py` — Standalone Python 3 script to extract EPUB to plain text (stdlib only)
 - `BOOK_PROMPT.md` — The extraction template all summaries must follow (5-section structure)
 
 ## Adding a New Book
 
-1. Add an entry to `books.json` with `id`, `title`, `author`, `description`, and `file`
-2. Place the summary `.md` file in `books/` (filename must match the `file` field in `books.json`)
+1. Add an entry to the `BOOKS` array in `main.js` with `id`, `title`, `author`, `description`, and `file`
+2. Place the summary `.md` file in `books/` (filename must match the `file` field)
 
 That's it. The index grid and detail page render dynamically from the registry. No HTML editing or deploy config changes needed.
 

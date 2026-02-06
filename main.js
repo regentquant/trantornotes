@@ -1,6 +1,23 @@
 const THEME_KEY = "trantor-theme";
 const DEFAULT_THEME = "light";
 
+const BOOKS = [
+  {
+    id: "the-wolf-of-investing",
+    title: "The Wolf of Investing",
+    author: "Jordan Belfort",
+    description: "Jordan Belfort's guide to low-fee indexing, compounding, and long-horizon portfolio discipline.",
+    file: "The Wolf of Investing.md"
+  },
+  {
+    id: "the-intelligent-investor",
+    title: "The Intelligent Investor, 3rd Ed.",
+    author: "Benjamin Graham",
+    description: "Benjamin Graham's case that temperamental discipline and margin of safety matter more than intelligence for long-term investment success.",
+    file: "The Intelligent Investor, 3rd Ed..md"
+  }
+];
+
 const html = document.documentElement;
 const themeToggle = document.getElementById("themeToggle");
 
@@ -28,19 +45,11 @@ function initTheme() {
   }
 }
 
-async function fetchBooks() {
-  const response = await fetch("./books.json", { cache: "no-store" });
-  if (!response.ok) {
-    throw new Error("Failed to load book registry.");
-  }
-  return response.json();
-}
-
-function renderBookGrid(books) {
+function renderBookGrid() {
   const grid = document.getElementById("bookGrid");
   if (!grid) return;
 
-  grid.innerHTML = books.map((book, i) => `
+  grid.innerHTML = BOOKS.map((book, i) => `
     <article class="card book-card">
       <div>
         <span class="badge">Book ${String(i + 1).padStart(2, "0")}</span>
@@ -69,31 +78,29 @@ async function renderBookPage() {
     return;
   }
 
+  const book = BOOKS.find(b => b.id === bookId);
+  if (!book) {
+    metaLoading.classList.add("alert-danger");
+    metaLoading.innerHTML = "<span>Book not found.</span>";
+    return;
+  }
+
+  document.title = `Trantor Notes | ${book.title}`;
+  document.querySelector('meta[name="description"]').content =
+    `Summary of ${book.title} on Trantor Notes.`;
+
+  document.getElementById("bookTitle").textContent = book.title;
+  document.getElementById("bookAuthor").textContent = book.author;
+  document.getElementById("bookDescription").textContent = book.description;
+
+  const mdPath = `./books/${encodeURIComponent(book.file)}`;
+  document.getElementById("bookMarkdownLink").href = mdPath;
+
+  metaLoading.remove();
+  metaContent.classList.remove("hidden");
+  summarySection.classList.remove("hidden");
+
   try {
-    const books = await fetchBooks();
-    const book = books.find(b => b.id === bookId);
-
-    if (!book) {
-      metaLoading.classList.add("alert-danger");
-      metaLoading.innerHTML = "<span>Book not found.</span>";
-      return;
-    }
-
-    document.title = `Trantor Notes | ${book.title}`;
-    document.querySelector('meta[name="description"]').content =
-      `Summary of ${book.title} on Trantor Notes.`;
-
-    document.getElementById("bookTitle").textContent = book.title;
-    document.getElementById("bookAuthor").textContent = book.author;
-    document.getElementById("bookDescription").textContent = book.description;
-
-    const mdPath = `./books/${encodeURIComponent(book.file)}`;
-    document.getElementById("bookMarkdownLink").href = mdPath;
-
-    metaLoading.remove();
-    metaContent.classList.remove("hidden");
-    summarySection.classList.remove("hidden");
-
     const response = await fetch(mdPath, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Unable to load summary (HTTP ${response.status}).`);
@@ -120,10 +127,7 @@ async function renderBookPage() {
 initTheme();
 
 if (document.getElementById("bookGrid")) {
-  fetchBooks().then(renderBookGrid).catch(() => {
-    const grid = document.getElementById("bookGrid");
-    grid.innerHTML = '<p class="text-secondary">Unable to load books.</p>';
-  });
+  renderBookGrid();
 }
 
 if (document.getElementById("bookArticle")) {
