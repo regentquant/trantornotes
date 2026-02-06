@@ -6,6 +6,7 @@ const BOOKS = [
     id: "the-wolf-of-investing",
     title: "The Wolf of Investing",
     author: "Jordan Belfort",
+    language: "en",
     description: "Jordan Belfort's guide to low-fee indexing, compounding, and long-horizon portfolio discipline.",
     file: "The Wolf of Investing.md"
   },
@@ -13,6 +14,7 @@ const BOOKS = [
     id: "the-intelligent-investor",
     title: "The Intelligent Investor, 3rd Ed.",
     author: "Benjamin Graham",
+    language: "en",
     description: "Benjamin Graham's case that temperamental discipline and margin of safety matter more than intelligence for long-term investment success.",
     file: "The Intelligent Investor, 3rd Ed..md"
   },
@@ -20,6 +22,7 @@ const BOOKS = [
     id: "how-an-economy-grows",
     title: "小岛经济学",
     author: "Peter Schiff & Andrew Schiff",
+    language: "zh",
     description: "Peter Schiff's parable-driven case that all prosperity stems from saving and production, and that government monetary expansion is a destructive illusion.",
     file: "小岛经济学.md"
   }
@@ -60,12 +63,13 @@ function renderBookGrid() {
     <article class="card book-card">
       <div>
         <span class="badge">Book ${String(i + 1).padStart(2, "0")}</span>
+        <span class="badge">${book.language.toUpperCase()}</span>
       </div>
       <h3 class="book-card-title">${book.title}</h3>
       <p class="book-card-description">${book.description}</p>
       <div class="book-card-footer">
         <span class="book-card-meta">${book.author}</span>
-        <a class="btn-read" href="./book.html?id=${book.id}">Read Summary</a>
+        <a class="btn-read" href="./book.html?id=${book.id}" target="_blank">Read Summary</a>
       </div>
     </article>
   `).join("");
