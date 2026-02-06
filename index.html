@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trantor Notes | The Wolf of Investing</title>
+    <meta
+      name="description"
+      content="Trantor Notes - compact book notes with full rendered summaries."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="bg-system">
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <p class="section-label">Reading Ledger</p>
+          <h1>Trantor Notes</h1>
+        </div>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          LIGHT
+        </button>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section class="card">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="badge badge-primary">Book 01</span>
+          <span class="text-sm text-secondary mono">Jordan Belfort</span>
+        </div>
+        <h2 class="book-title">The Wolf of Investing</h2>
+        <p>
+          This book strips investing down to first principles: broad market
+          exposure, low fees, long time horizons, and behavior control.
+          Belfort's central claim is direct: most people do not fail because
+          they pick the wrong stock, they fail because they overtrade, pay too
+          much in fees, and abandon plans during drawdowns.
+        </p>
+        <p>
+          The summary below is rendered from
+          <code>The Wolf of Investing.md</code>, so you can keep your source in
+          markdown and still publish a clean, readable article. The note is
+          opinionated and compressed for speed: thesis, frameworks, first
+          principles, and a practical portfolio blueprint.
+        </p>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <p class="card-label">Core Argument</p>
+          <p>
+            Passive, low-cost index investing beats fee-heavy active management
+            for nearly all investors over long periods.
+          </p>
+          <span class="badge badge-success">Low Fees Win</span>
+        </article>
+        <article class="card">
+          <p class="card-label">Execution Model</p>
+          <p>
+            Use monthly contributions, reinvest dividends, rebalance annually,
+            and keep speculation contained to a small side allocation.
+          </p>
+          <span class="badge badge-warning">Behavior Is Edge</span>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <p class="section-label">Rendered Summary</p>
+          <a class="ghost-link" href="./The%20Wolf%20of%20Investing.md"
+            >Open Markdown</a
+          >
+        </div>
+        <div id="articleStatus" class="alert alert-info" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Loading article source...</span>
+        </div>
+        <article id="bookArticle" class="article"></article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Trantor Notes</p>
+      <p class="text-tertiary">Focus on signal, not noise.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
