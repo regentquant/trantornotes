@@ -13,31 +13,31 @@ python3 -m http.server 8080
 # Open http://localhost:8080
 ```
 
-No npm, no bundler, no dependencies to install. The detail pages load marked.js from CDN for markdown rendering.
+No npm, no bundler, no dependencies to install. `book.html` loads marked.js from CDN for markdown rendering.
 
 ## Deployment
 
-Push to `main` triggers `.github/workflows/deploy.yml`, which copies specific files into `_site/` and deploys to GitHub Pages. **Important:** The deploy script explicitly lists files to copy — when adding a new book, the workflow must be updated to include the new markdown file.
+Push to `main` triggers `.github/workflows/deploy.yml`, which copies static files + the `books/` directory into `_site/` and deploys to GitHub Pages. No per-book deploy config needed.
 
 ## Architecture
 
-- `index.html` — Homepage with book grid
-- `notes/<book-slug>.html` — Detail pages that fetch and render markdown via marked.js
-- `styles.css` — Full design system using CSS custom properties (light/dark theme)
-- `main.js` — Theme toggle (localStorage persistence) + markdown fetch/render
-- `books/` — Source EPUBs and extracted .txt files (not deployed)
-- `summaries/` — Markdown summaries (not deployed; the deployed copy lives at root)
+- `index.html` — Homepage, renders book grid dynamically from `books.json`
+- `book.html` — Single detail template for all books, reads `?id=slug` from URL
+- `books.json` — Book registry (single source of truth for all book metadata)
+- `books/` — Markdown summaries (deployed), EPUBs and extracted `.txt` files
+- `styles.css` — Design system using CSS custom properties (light/dark theme)
+- `main.js` — Theme toggle, book grid rendering, book detail page rendering
+- `tools/epub_to_txt.py` — Standalone Python 3 script to extract EPUB to plain text (stdlib only)
 - `BOOK_PROMPT.md` — The extraction template all summaries must follow (5-section structure)
-- `epub_to_txt.py` — Standalone Python 3 script to extract EPUB to plain text (stdlib only)
 
 ## Adding a New Book
 
-1. Place EPUB in `books/`, extract text: `python3 epub_to_txt.py "books/Title.epub"`
-2. Write summary markdown following the 5-section format in `BOOK_PROMPT.md` (Core Thesis, Mental Models, High-Signal Insights, First Principles Logic Chain, What to Ignore)
-3. Save markdown at root level (e.g., `Title.md`) — this is what gets deployed and fetched by the detail page
-4. Copy `notes/the-wolf-of-investing.html` as a template, update: title, meta description, author, description text, and `data-markdown-source` attribute pointing to the markdown file
-5. Add a card to `index.html` inside `.book-grid` with badge number, title, description, author, and link
-6. Update `.github/workflows/deploy.yml` to include the new markdown file in the `cp` commands
+1. Add an entry to `books.json` with `id`, `title`, `author`, `description`, and `file`
+2. Place the summary `.md` file in `books/` (filename must match the `file` field in `books.json`)
+
+That's it. The index grid and detail page render dynamically from the registry. No HTML editing or deploy config changes needed.
+
+To extract text from an EPUB first: `python3 tools/epub_to_txt.py "books/Title.epub"`
 
 ## Styling Conventions
 

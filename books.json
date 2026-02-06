@@ -1,0 +1,16 @@
+[
+  {
+    "id": "the-wolf-of-investing",
+    "title": "The Wolf of Investing",
+    "author": "Jordan Belfort",
+    "description": "Jordan Belfort's guide to low-fee indexing, compounding, and long-horizon portfolio discipline.",
+    "file": "The Wolf of Investing.md"
+  },
+  {
+    "id": "the-intelligent-investor",
+    "title": "The Intelligent Investor, 3rd Ed.",
+    "author": "Benjamin Graham",
+    "description": "Benjamin Graham's case that temperamental discipline and margin of safety matter more than intelligence for long-term investment success.",
+    "file": "The Intelligent Investor, 3rd Ed..md"
+  }
+]

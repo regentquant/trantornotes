@@ -11,7 +11,6 @@ Behavior:
 
 from __future__ import annotations
 
-import argparse
 import html
 import os
 import posixpath
@@ -19,7 +18,7 @@ import re
 import sys
 import zipfile
 from html.parser import HTMLParser
-from typing import Dict, Iterable, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 import xml.etree.ElementTree as ET
 
 
@@ -227,30 +226,26 @@ def epub_to_text(epub_path: str) -> Tuple[str, int]:
     return output_path, section_count
 
 
-def convert_many(paths: Iterable[str]) -> int:
-    failures = 0
-    for path in paths:
-        try:
-            out, sections = epub_to_text(path)
-            print(f"[OK] {path} -> {out} ({sections} sections)")
-        except Exception as exc:  # noqa: BLE001
-            failures += 1
-            print(f"[ERR] {path}: {exc}", file=sys.stderr)
-    return failures
 
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Convert EPUB files to TXT (same filename, .txt extension)."
-    )
-    parser.add_argument("epub_files", nargs="+", help="Path(s) to .epub file(s)")
-    return parser.parse_args()
+EPUB_PATH = "/Users/curryyao/Downloads/小岛经济学_鱼、美元和经济的故事(《小岛经济学》=《国富论》+《经济学原理》。沉闷枯燥的科学竟然如此通俗易懂,上至90岁 -- 彼得·希夫 & 安德鲁·希夫 -- 2016 -- 中信出版社 -- 39d3.epub"
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 def main() -> int:
-    args = parse_args()
-    failures = convert_many(args.epub_files)
-    return 1 if failures else 0
+    epub_path = EPUB_PATH
+    if not zipfile.is_zipfile(epub_path):
+        print(f"[ERR] Not a valid EPUB/ZIP: {epub_path}", file=sys.stderr)
+        return 1
+
+    basename = os.path.splitext(os.path.basename(epub_path))[0] + ".txt"
+    output_path = os.path.join(REPO_ROOT, basename)
+
+    # Run conversion (writes next to epub by default)
+    out, sections = epub_to_text(epub_path)
+    # Move output to repo root
+    os.replace(out, output_path)
+    print(f"[OK] {epub_path} -> {output_path} ({sections} sections)")
+    return 0
 
 
 if __name__ == "__main__":
