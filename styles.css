@@ -202,6 +202,12 @@ button {
   gap: var(--space-3);
 }
 
+.header-subtitle {
+  margin: var(--space-quarter) 0 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
 .site-main {
   max-width: 900px;
   margin: 0 auto;
@@ -271,6 +277,41 @@ button {
   transform: scale(0.98);
 }
 
+.theme-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-full);
+  background: var(--fill-tertiary);
+  color: var(--text-primary);
+  padding: var(--space-1-5) var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--apple-ease),
+    transform var(--duration-fast) var(--apple-ease);
+}
+
+.theme-toggle-button:hover {
+  background: var(--fill-quaternary);
+}
+
+.theme-toggle-button:active {
+  transform: scale(0.98);
+}
+
+.theme-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-text {
+  line-height: 1;
+}
+
 .ghost-link {
   display: inline-flex;
   align-items: center;
@@ -321,6 +362,66 @@ button {
 .badge-danger {
   background: var(--red-tint);
   color: var(--red-danger);
+}
+
+.library-list,
+.pipeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.library-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+}
+
+.library-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.library-title {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.library-title:hover {
+  color: var(--blue-hover);
+}
+
+.library-sub {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.pipeline-list li {
+  border-bottom: 1px solid var(--separator);
+  padding: var(--space-1) 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.pipeline-list li:last-child {
+  border-bottom: 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.status-dot-live {
+  background: var(--green-safe);
 }
 
 .alert {
