@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trantor Notes | Book Library</title>
+    <title>Trantor Notes | The Source Code of Great Books</title>
     <meta
       name="description"
-      content="Trantor Notes - a growing collection of book summaries and reading notes."
+      content="Trantor Notes extracts the mental models, logic chains, and actionable frameworks from non-fiction books — and deletes the rest."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,6 @@
       <div class="header-inner">
         <div class="header-brand">
           <h1>Trantor Notes</h1>
-          <p class="header-subtitle">A growing library of distilled books.</p>
         </div>
         <button
           id="themeToggle"
@@ -35,20 +34,100 @@
     </header>
 
     <main class="site-main">
-      <section class="intro-card">
-        <p class="section-label">Library</p>
-        <h2 class="book-title">Book Summaries</h2>
-        <p class="text-secondary">
-          Distilled notes from books worth remembering.
+
+      <!-- Hero -->
+      <section class="hero">
+        <h2 class="hero-headline">The Source Code of Great Books.</h2>
+        <p class="hero-sub">
+          Most non-fiction is 90% filler and 10% insight. We delete the
+          filler — the anecdotes, the repetition, the padding — to give
+          you the raw executable logic.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#library">Explore the Library</a>
+          <a class="hero-secondary" href="#protocol">See how it works</a>
+        </div>
+      </section>
+
+      <!-- Before / After contrast -->
+      <section class="contrast-section">
+        <div class="card contrast-card">
+          <p class="contrast-label">The Book</p>
+          <p class="contrast-icon">&#128214;</p>
+          <p class="contrast-detail">
+            300 pages. Anecdotes, repetition, publisher mandates,
+            the author's third story about a childhood dog.
+          </p>
+        </div>
+        <div class="card contrast-card contrast-card-right">
+          <p class="contrast-label">The Trantor Note</p>
+          <p class="contrast-icon">&#9670;</p>
+          <p class="contrast-detail">
+            Mental models, first-principle logic chains, actionable
+            frameworks, counter-intuitive data points.
+          </p>
+        </div>
+      </section>
+      <p class="contrast-closing">
+        You wouldn't read an app's binary code to use it. You just want it to run.
+      </p>
+
+      <!-- Three pillars -->
+      <section class="pillars">
+        <div class="card pillar">
+          <h3 class="pillar-title">Signal Only</h3>
+          <p class="pillar-text">
+            No summaries. No retelling. We filter for unique insights,
+            counter-intuitive facts, and ideas you can't get from a
+            Google search.
+          </p>
+        </div>
+        <div class="card pillar">
+          <h3 class="pillar-title">First Principles</h3>
+          <p class="pillar-text">
+            We reconstruct the author's argument from the ground up
+            — premise by premise — so you understand why it works,
+            not just what to do.
+          </p>
+        </div>
+        <div class="card pillar">
+          <h3 class="pillar-title">Actionable Output</h3>
+          <p class="pillar-text">
+            Every note follows a strict 5-section protocol: Core Thesis,
+            Mental Models, High-Signal Insights, Logic Chain,
+            and What to Ignore.
+          </p>
+        </div>
+      </section>
+
+      <!-- Protocol -->
+      <section id="protocol" class="protocol-section">
+        <p class="section-label">Our Protocol</p>
+        <blockquote>
+          We treat non-fiction books not as literature, but as software
+          packages for the mind — stripping away the packaging to give
+          you the executable code.
+        </blockquote>
+        <p class="protocol-text">
+          Other services try to retell the story in 15 minutes.
+          We give you the logic tree and the data points. If a chapter
+          is purely anecdotal padding, we say so — and tell you to skip it.
         </p>
       </section>
 
+      <!-- Library -->
+      <section id="library" class="library-intro">
+        <p class="section-label">Library</p>
+        <h2 class="section-title">Published Notes</h2>
+      </section>
+
       <section id="bookGrid" class="book-grid"></section>
+
     </main>
 
     <footer class="site-footer">
       <p>Trantor Notes</p>
-      <p>Focus on signal, not noise.</p>
+      <p>Signal extracted. Noise deleted.</p>
     </footer>
 
     <script src="./main.js"></script>

@@ -221,11 +221,180 @@ button {
   transform: scale(0.95);
 }
 
-/* ---- Intro section ---- */
+/* ---- Hero ---- */
 
-.intro-card {
-  padding: var(--sp-5) 0;
+.hero {
+  text-align: center;
+  padding: var(--sp-10) 0 var(--sp-8) 0;
 }
+
+.hero-headline {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.15;
+  margin-bottom: var(--sp-5);
+  letter-spacing: -0.02em;
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto var(--sp-6) auto;
+  line-height: 1.65;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  font-family: var(--font-body);
+  padding: var(--sp-3) var(--sp-5);
+  text-decoration: none;
+  transition: background var(--duration) var(--ease),
+              transform var(--duration) var(--ease);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.hero-secondary {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease);
+}
+
+.hero-secondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- Contrast (before/after) ---- */
+
+.contrast-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+}
+
+.contrast-card {
+  padding: var(--sp-6);
+  text-align: center;
+}
+
+.contrast-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-3);
+}
+
+.contrast-icon {
+  font-size: 32px;
+  margin-bottom: var(--sp-3);
+  line-height: 1;
+}
+
+.contrast-detail {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contrast-card-right {
+  border-color: var(--accent-tint-strong);
+}
+
+.contrast-card-right .contrast-label {
+  color: var(--accent);
+}
+
+.contrast-closing {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: var(--sp-5);
+  font-size: var(--text-base);
+}
+
+/* ---- Pillars (3-column features) ---- */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.pillar {
+  padding: var(--sp-6);
+}
+
+.pillar-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--sp-3);
+}
+
+.pillar-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ---- Protocol section ---- */
+
+.protocol-section {
+  padding: var(--sp-6) 0;
+}
+
+.protocol-section blockquote {
+  padding: var(--sp-5) var(--sp-6);
+  border-left: 3px solid var(--accent);
+  background: var(--accent-tint);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 var(--sp-5) 0;
+}
+
+.protocol-text {
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: 1.65;
+}
+
+/* ---- Section shared ---- */
 
 .section-label {
   font-family: var(--font-body);
@@ -237,8 +406,13 @@ button {
   margin: 0 0 var(--sp-2) 0;
 }
 
-.book-title {
+.section-title {
   font-size: var(--text-2xl);
+  margin-bottom: var(--sp-4);
+}
+
+.library-intro {
+  padding: var(--sp-5) 0 0 0;
 }
 
 /* ---- Book grid ---- */
@@ -530,6 +704,18 @@ button {
 /* ---- Responsive ---- */
 
 @media (max-width: 768px) {
+  .hero {
+    padding: var(--sp-7) 0 var(--sp-6) 0;
+  }
+
+  .contrast-section {
+    grid-template-columns: 1fr;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
   .book-grid {
     grid-template-columns: 1fr;
   }
@@ -544,6 +730,11 @@ button {
   }
 
   .book-card {
+    padding: var(--sp-5);
+  }
+
+  .pillar,
+  .contrast-card {
     padding: var(--sp-5);
   }
 
