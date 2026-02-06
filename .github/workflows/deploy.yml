@@ -33,6 +33,7 @@ jobs:
           cp index.html _site/index.html
           cp styles.css _site/styles.css
           cp main.js _site/main.js
+          cp -R notes _site/notes
           cp "The Wolf of Investing.md" "_site/The Wolf of Investing.md"
           touch _site/.nojekyll
 

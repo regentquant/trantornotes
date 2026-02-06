@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trantor Notes | The Wolf of Investing</title>
+    <title>Trantor Notes | Book Library</title>
     <meta
       name="description"
-      content="Trantor Notes - compact book notes with full rendered summaries."
+      content="Trantor Notes - a growing collection of book summaries and reading notes."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -14,8 +14,8 @@
     <header class="site-header">
       <div class="header-inner">
         <div>
-          <p class="section-label">Reading Ledger</p>
           <h1>Trantor Notes</h1>
+          <p class="header-subtitle">A growing library of distilled books.</p>
         </div>
         <button
           id="themeToggle"
@@ -30,58 +30,44 @@
 
     <main class="site-main">
       <section class="card">
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <span class="badge badge-primary">Book 01</span>
-          <span class="text-sm text-secondary mono">Jordan Belfort</span>
-        </div>
-        <h2 class="book-title">The Wolf of Investing</h2>
+        <p class="section-label">Library</p>
+        <h2 class="book-title">Browse published summaries</h2>
         <p>
-          This book strips investing down to first principles: broad market
-          exposure, low fees, long time horizons, and behavior control.
-          Belfort's central claim is direct: most people do not fail because
-          they pick the wrong stock, they fail because they overtrade, pay too
-          much in fees, and abandon plans during drawdowns.
+          Home is now an index page for every book you publish. Each book has
+          its own dedicated detail page with full rendered markdown.
         </p>
         <p>
-          The summary below is rendered from
-          <code>The Wolf of Investing.md</code>, so you can keep your source in
-          markdown and still publish a clean, readable article. The note is
-          opinionated and compressed for speed: thesis, frameworks, first
-          principles, and a practical portfolio blueprint.
+          New books can be added as new cards here, with links to their own
+          summary pages.
         </p>
       </section>
 
-      <section class="grid grid-2">
-        <article class="card">
-          <p class="card-label">Core Argument</p>
+      <section class="grid grid-2 book-grid">
+        <article class="card book-card">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="badge badge-primary">Book 01</span>
+            <span class="badge badge-success">Published</span>
+          </div>
+          <h3 class="book-card-title">The Wolf of Investing</h3>
           <p>
-            Passive, low-cost index investing beats fee-heavy active management
-            for nearly all investors over long periods.
+            Jordan Belfort's guide to low-fee indexing, compounding, and
+            long-horizon portfolio discipline.
           </p>
-          <span class="badge badge-success">Low Fees Win</span>
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm text-secondary mono">Jordan Belfort</span>
+            <a class="ghost-link" href="./notes/the-wolf-of-investing.html"
+              >Read Summary</a
+            >
+          </div>
         </article>
         <article class="card">
-          <p class="card-label">Execution Model</p>
-          <p>
-            Use monthly contributions, reinvest dividends, rebalance annually,
-            and keep speculation contained to a small side allocation.
-          </p>
-          <span class="badge badge-warning">Behavior Is Edge</span>
+          <p class="card-label">Upcoming Books</p>
+          <ul class="queue-list">
+            <li>Book 02 - pending</li>
+            <li>Book 03 - pending</li>
+            <li>Book 04 - pending</li>
+          </ul>
         </article>
-      </section>
-
-      <section class="card">
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <p class="section-label">Rendered Summary</p>
-          <a class="ghost-link" href="./The%20Wolf%20of%20Investing.md"
-            >Open Markdown</a
-          >
-        </div>
-        <div id="articleStatus" class="alert alert-info" role="status">
-          <span class="spinner" aria-hidden="true"></span>
-          <span>Loading article source...</span>
-        </div>
-        <article id="bookArticle" class="article"></article>
       </section>
     </main>
 
@@ -90,7 +76,6 @@
       <p class="text-tertiary">Focus on signal, not noise.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>

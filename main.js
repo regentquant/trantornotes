@@ -1,6 +1,5 @@
 const THEME_KEY = "trantor-theme";
 const DEFAULT_THEME = "dark";
-const MARKDOWN_FILE = "./The%20Wolf%20of%20Investing.md";
 
 const html = document.documentElement;
 const themeToggle = document.getElementById("themeToggle");
@@ -9,7 +8,9 @@ const articleStatus = document.getElementById("articleStatus");
 
 function applyTheme(theme) {
   html.setAttribute("data-theme", theme);
-  themeToggle.textContent = theme === "dark" ? "LIGHT" : "DARK";
+  if (themeToggle) {
+    themeToggle.textContent = theme === "dark" ? "LIGHT" : "DARK";
+  }
 }
 
 function initTheme() {
@@ -17,27 +18,34 @@ function initTheme() {
   const preferredTheme = savedTheme || DEFAULT_THEME;
   applyTheme(preferredTheme);
 
-  themeToggle.addEventListener("click", () => {
-    const activeTheme = html.getAttribute("data-theme");
-    const nextTheme = activeTheme === "dark" ? "light" : "dark";
-    localStorage.setItem(THEME_KEY, nextTheme);
-    applyTheme(nextTheme);
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const activeTheme = html.getAttribute("data-theme");
+      const nextTheme = activeTheme === "dark" ? "light" : "dark";
+      localStorage.setItem(THEME_KEY, nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
 }
 
 function showError(message) {
+  if (!articleStatus) {
+    return;
+  }
   articleStatus.classList.remove("alert-info");
   articleStatus.classList.add("alert-danger");
   articleStatus.innerHTML = `<span>${message}</span>`;
 }
 
 function clearStatus() {
-  articleStatus.remove();
+  if (articleStatus) {
+    articleStatus.remove();
+  }
 }
 
-async function renderBookSummary() {
+async function renderBookSummary(markdownFile) {
   try {
-    const response = await fetch(MARKDOWN_FILE, { cache: "no-store" });
+    const response = await fetch(markdownFile, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Unable to read markdown file (HTTP ${response.status}).`);
     }
@@ -56,9 +64,15 @@ async function renderBookSummary() {
 
     clearStatus();
   } catch (error) {
-    showError(error.message);
+    showError(error instanceof Error ? error.message : String(error));
   }
 }
 
 initTheme();
-renderBookSummary();
+
+if (article && articleStatus) {
+  const markdownFile =
+    article.getAttribute("data-markdown-source") ||
+    "./The%20Wolf%20of%20Investing.md";
+  renderBookSummary(markdownFile);
+}

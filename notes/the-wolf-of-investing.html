@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trantor Notes | The Wolf of Investing</title>
+    <meta
+      name="description"
+      content="Detailed summary page for The Wolf of Investing on Trantor Notes."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="bg-system">
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <h1>Trantor Notes</h1>
+          <p class="header-subtitle">Book details and full rendered summary.</p>
+        </div>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          LIGHT
+        </button>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section class="card">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <a class="ghost-link" href="../index.html">Back to Library</a>
+          <span class="badge badge-primary">Book 01</span>
+        </div>
+        <h2 class="book-title">The Wolf of Investing</h2>
+        <p class="text-sm text-secondary mono">Jordan Belfort</p>
+        <p>
+          This summary argues that low-cost passive indexing plus long-term
+          behavioral discipline outperforms fee-heavy active management for
+          most investors.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <p class="section-label">Rendered Summary</p>
+          <a class="ghost-link" href="../The%20Wolf%20of%20Investing.md"
+            >Open Markdown</a
+          >
+        </div>
+        <div id="articleStatus" class="alert alert-info" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Loading article source...</span>
+        </div>
+        <article
+          id="bookArticle"
+          class="article"
+          data-markdown-source="../The%20Wolf%20of%20Investing.md"
+        ></article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Trantor Notes</p>
+      <p class="text-tertiary">Focus on signal, not noise.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../main.js"></script>
+  </body>
+</html>

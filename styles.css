@@ -202,6 +202,12 @@ button {
   gap: var(--space-3);
 }
 
+.header-subtitle {
+  margin: var(--space-quarter) 0 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
 .site-main {
   max-width: 900px;
   margin: 0 auto;
@@ -228,6 +234,13 @@ button {
 
 .book-title {
   font-size: var(--text-2xl);
+}
+
+.book-card-title {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .section-label {
@@ -321,6 +334,27 @@ button {
 .badge-danger {
   background: var(--red-tint);
   color: var(--red-danger);
+}
+
+.book-grid .card {
+  min-height: 172px;
+}
+
+.queue-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.queue-list li {
+  border-bottom: 1px solid var(--separator);
+  padding: var(--space-1) 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.queue-list li:last-child {
+  border-bottom: 0;
 }
 
 .alert {
