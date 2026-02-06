@@ -1,0 +1,14 @@
+{
+  "name": "trantornotes",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:assets",
+    "build:assets": "mkdir -p dist/books && cp -R books/. dist/books && find dist/books -name '.DS_Store' -delete && touch dist/.nojekyll",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.11"
+  }
+}

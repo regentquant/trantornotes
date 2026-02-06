@@ -2,19 +2,24 @@
 
 Trantor Notes is a compact reading journal site for book notes and summaries.
 
-## Current book
-
-- **The Wolf of Investing** (`The Wolf of Investing.md`)
-
-## Local preview
+## Local development
 
 Run:
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open the local URL shown by Vite (usually `http://localhost:5173`).
+
+## Production build
+
+```bash
+npm run build
+```
+
+Build output is generated in `dist/` and includes all markdown files under `books/`.
 
 ## Deployment
 

@@ -3,28 +3,28 @@ const DEFAULT_THEME = "light";
 
 const BOOKS = [
   {
-    id: "the-wolf-of-investing",
+    id: "the-wolf-of-investing-en",
     title: "The Wolf of Investing",
     author: "Jordan Belfort",
     language: "en",
     description: "Jordan Belfort's guide to low-fee indexing, compounding, and long-horizon portfolio discipline.",
-    file: "The Wolf of Investing.md"
+    file: "The Wolf of Investing-en.md"
   },
   {
-    id: "the-intelligent-investor",
+    id: "the-intelligent-investor-en",
     title: "The Intelligent Investor, 3rd Ed.",
     author: "Benjamin Graham",
     language: "en",
     description: "Benjamin Graham's case that temperamental discipline and margin of safety matter more than intelligence for long-term investment success.",
-    file: "The Intelligent Investor, 3rd Ed..md"
+    file: "The Intelligent Investor, 3rd Ed.-en.md"
   },
   {
-    id: "how-an-economy-grows",
-    title: "小岛经济学",
+    id: "how-an-economy-grows-en",
+    title: "How an Economy Grows and Why It Crashes",
     author: "Peter Schiff & Andrew Schiff",
-    language: "zh",
-    description: "Peter Schiff's parable-driven case that all prosperity stems from saving and production, and that government monetary expansion is a destructive illusion.",
-    file: "小岛经济学.md"
+    language: "en",
+    description: "The Schiffs' case that durable growth comes from savings, production, and capital investment.",
+    file: "小岛经济学-en.md"
   }
 ];
 
@@ -60,16 +60,16 @@ function renderBookGrid() {
   if (!grid) return;
 
   grid.innerHTML = BOOKS.map((book, i) => `
-    <article class="card book-card">
-      <div>
-        <span class="badge">Book ${String(i + 1).padStart(2, "0")}</span>
-        <span class="badge">${book.language.toUpperCase()}</span>
+    <article class="card card-interactive book-card">
+      <div class="u-flex u-wrap u-gap-2 u-mb-3">
+        <span class="badge badge-neutral">Book ${String(i + 1).padStart(2, "0")}</span>
+        <span class="badge badge-accent">${book.language.toUpperCase()}</span>
       </div>
       <h3 class="book-card-title">${book.title}</h3>
       <p class="book-card-description">${book.description}</p>
       <div class="book-card-footer">
         <span class="book-card-meta">${book.author}</span>
-        <a class="btn-read" href="./book.html?id=${book.id}" target="_blank">Read Summary</a>
+        <a class="btn btn-primary btn-sm" href="./book.html?id=${book.id}" target="_blank">Read Summary</a>
       </div>
     </article>
   `).join("");
@@ -114,7 +114,7 @@ async function renderBookPage() {
   if (window.location.protocol === "file:") {
     if (articleStatus) {
       articleStatus.classList.add("alert-danger");
-      articleStatus.innerHTML = "<span>Cannot load summary from file:// — start a local server: <code>python3 -m http.server 8080</code></span>";
+      articleStatus.innerHTML = "<span>Cannot load summary from file:// — run <code>npm run dev</code> and open the local URL.</span>";
     }
     return;
   }
@@ -138,7 +138,7 @@ async function renderBookPage() {
   } catch (error) {
     if (articleStatus) {
       articleStatus.classList.add("alert-danger");
-      articleStatus.innerHTML = `<span>Unable to load summary. Please ensure you are running a local server.</span>`;
+      articleStatus.innerHTML = "<span>Unable to load summary. Please ensure the dev server is running with <code>npm run dev</code>.</span>";
     }
   }
 }

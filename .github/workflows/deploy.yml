@@ -22,22 +22,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - name: Prepare static files
-        run: |
-          mkdir -p _site
-          cp index.html book.html styles.css main.js _site/
-          cp -R books _site/books
-          touch _site/.nojekyll
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
 
   deploy:
     environment:
