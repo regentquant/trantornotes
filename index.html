@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,12 +8,18 @@
       name="description"
       content="Trantor Notes - a growing collection of book summaries and reading notes."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body class="bg-system">
+  <body>
     <header class="site-header">
       <div class="header-inner">
-        <div>
+        <div class="header-brand">
           <h1>Trantor Notes</h1>
           <p class="header-subtitle">A growing library of distilled books.</p>
         </div>
@@ -23,57 +29,43 @@
           type="button"
           aria-label="Toggle theme"
         >
-          LIGHT
+          &#9789;
         </button>
       </div>
     </header>
 
     <main class="site-main">
-      <section class="card">
+      <section class="intro-card">
         <p class="section-label">Library</p>
-        <h2 class="book-title">Browse published summaries</h2>
-        <p>
-          Home is now an index page for every book you publish. Each book has
-          its own dedicated detail page with full rendered markdown.
-        </p>
-        <p>
-          New books can be added as new cards here, with links to their own
-          summary pages.
+        <h2 class="book-title">Book Summaries</h2>
+        <p class="text-secondary">
+          Distilled notes from books worth remembering.
         </p>
       </section>
 
-      <section class="grid grid-2 book-grid">
+      <section class="book-grid">
         <article class="card book-card">
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="badge badge-primary">Book 01</span>
-            <span class="badge badge-success">Published</span>
+          <div>
+            <span class="badge">Book 01</span>
           </div>
           <h3 class="book-card-title">The Wolf of Investing</h3>
-          <p>
+          <p class="book-card-description">
             Jordan Belfort's guide to low-fee indexing, compounding, and
             long-horizon portfolio discipline.
           </p>
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-sm text-secondary mono">Jordan Belfort</span>
-            <a class="ghost-link" href="./notes/the-wolf-of-investing.html"
+          <div class="book-card-footer">
+            <span class="book-card-meta">Jordan Belfort</span>
+            <a class="btn-read" href="./notes/the-wolf-of-investing.html"
               >Read Summary</a
             >
           </div>
-        </article>
-        <article class="card">
-          <p class="card-label">Upcoming Books</p>
-          <ul class="queue-list">
-            <li>Book 02 - pending</li>
-            <li>Book 03 - pending</li>
-            <li>Book 04 - pending</li>
-          </ul>
         </article>
       </section>
     </main>
 
     <footer class="site-footer">
       <p>Trantor Notes</p>
-      <p class="text-tertiary">Focus on signal, not noise.</p>
+      <p>Focus on signal, not noise.</p>
     </footer>
 
     <script src="./main.js"></script>

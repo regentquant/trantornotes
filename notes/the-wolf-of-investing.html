@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,14 +8,20 @@
       name="description"
       content="Detailed summary page for The Wolf of Investing on Trantor Notes."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body class="bg-system">
+  <body>
     <header class="site-header">
       <div class="header-inner">
-        <div>
+        <div class="header-brand">
           <h1>Trantor Notes</h1>
-          <p class="header-subtitle">Book details and full rendered summary.</p>
+          <p class="header-subtitle">Book details and full summary.</p>
         </div>
         <button
           id="themeToggle"
@@ -23,19 +29,19 @@
           type="button"
           aria-label="Toggle theme"
         >
-          LIGHT
+          &#9789;
         </button>
       </div>
     </header>
 
     <main class="site-main">
-      <section class="card">
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <a class="ghost-link" href="../index.html">Back to Library</a>
-          <span class="badge badge-primary">Book 01</span>
-        </div>
+      <section>
+        <a class="back-link" href="../index.html">Back to Library</a>
+      </section>
+
+      <section class="card" style="padding: var(--sp-6)">
         <h2 class="book-title">The Wolf of Investing</h2>
-        <p class="text-sm text-secondary mono">Jordan Belfort</p>
+        <p class="book-card-meta" style="margin-bottom: var(--sp-4)">Jordan Belfort</p>
         <p>
           This summary argues that low-cost passive indexing plus long-term
           behavioral discipline outperforms fee-heavy active management for
@@ -43,16 +49,16 @@
         </p>
       </section>
 
-      <section class="card">
+      <section class="card" style="padding: var(--sp-6)">
         <div class="flex items-center justify-between gap-2 mb-2">
-          <p class="section-label">Rendered Summary</p>
-          <a class="ghost-link" href="../The%20Wolf%20of%20Investing.md"
-            >Open Markdown</a
+          <p class="section-label">Summary</p>
+          <a class="text-sm" href="../The%20Wolf%20of%20Investing.md"
+            style="color: var(--accent)">View Markdown</a
           >
         </div>
-        <div id="articleStatus" class="alert alert-info" role="status">
+        <div id="articleStatus" class="alert" role="status">
           <span class="spinner" aria-hidden="true"></span>
-          <span>Loading article source...</span>
+          <span>Loading article...</span>
         </div>
         <article
           id="bookArticle"
@@ -64,7 +70,7 @@
 
     <footer class="site-footer">
       <p>Trantor Notes</p>
-      <p class="text-tertiary">Focus on signal, not noise.</p>
+      <p>Focus on signal, not noise.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

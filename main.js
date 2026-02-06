@@ -1,5 +1,5 @@
 const THEME_KEY = "trantor-theme";
-const DEFAULT_THEME = "dark";
+const DEFAULT_THEME = "light";
 
 const html = document.documentElement;
 const themeToggle = document.getElementById("themeToggle");
@@ -9,7 +9,10 @@ const articleStatus = document.getElementById("articleStatus");
 function applyTheme(theme) {
   html.setAttribute("data-theme", theme);
   if (themeToggle) {
-    themeToggle.textContent = theme === "dark" ? "LIGHT" : "DARK";
+    themeToggle.innerHTML = theme === "dark" ? "&#9788;" : "&#9789;";
+    themeToggle.setAttribute("aria-label",
+      theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
   }
 }
 
@@ -32,7 +35,6 @@ function showError(message) {
   if (!articleStatus) {
     return;
   }
-  articleStatus.classList.remove("alert-info");
   articleStatus.classList.add("alert-danger");
   articleStatus.innerHTML = `<span>${message}</span>`;
 }
