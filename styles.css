@@ -43,8 +43,8 @@
   --color-accent-tint-strong: var(--color-accent-100);
 
   /* Typography tokens */
-  --font-family-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  --font-family-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-display: "Libre Baskerville", "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-family-body: "Source Sans 3", "Noto Serif SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, monospace;
 
   --font-size-xs: 0.75rem;
@@ -273,6 +273,12 @@ svg {
   gap: var(--space-4);
 }
 
+.header-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 .header-brand {
   display: flex;
   flex-direction: column;
@@ -365,6 +371,10 @@ svg {
 
 .theme-toggle:active {
   transform: scale(0.95);
+}
+
+.lang-toggle {
+  font-size: 1rem;
 }
 
 .btn {
@@ -1047,6 +1057,51 @@ svg {
   gap: var(--space-3);
 }
 
+.summary-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.summary-language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  padding: 2px;
+}
+
+.summary-lang-btn {
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.42rem 0.62rem;
+  cursor: pointer;
+  transition:
+    color var(--duration-base) var(--ease-standard),
+    background var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.summary-lang-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.summary-lang-btn.is-active {
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-xs);
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -1223,6 +1278,11 @@ svg {
 
   .book-card-footer {
     flex-wrap: wrap;
+  }
+
+  .summary-controls {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .article {
